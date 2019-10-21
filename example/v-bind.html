@@ -9,13 +9,37 @@
     <h1>V-bind</h1>
     <hr>
     <div id="app">
-        {{message}}
+        <a v-bind:href="link">baidu</a>
+        <div :class="className">1:绑定className</div>
+        <div :class="{classA:isOk}">2:动态绑定</div>
+        <div :class="[classA, classB]">3:绑定数组</div>
+        <div :class="isOk?classA:classB">4:三元运算符</div>
+        <div :style="{color:color,fontSize:fontsize}">5:绑定样式</div>
+        <div :style="styleObject">6:对象样式绑定</div>
     </div>
+    <style>
+        .classA{
+            color:red;
+        }
+        .classB{
+            font-size:150%;
+        }
+    </style>
     <script>
         var app = new Vue({
             el:"#app",
             data:{
-                message:'hello Vue'
+                link:'http://www.baidu.com',
+                className:'classA',
+                isOk:true,
+                classA:'classA',
+                classB:'classB',
+                color:'blue',
+                fontsize:'30px',
+                styleObject:{
+                    color:'pink',
+                    fontsize:'20px',
+                }
             }
         })
     </script>
